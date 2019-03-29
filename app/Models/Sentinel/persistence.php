@@ -2,9 +2,9 @@
 
 namespace App\Models\Sentinel;
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Persistences\EloquentPersistence;
 
-class persistence extends Model
+class Persistence extends EloquentPersistence
 {
     //
 }

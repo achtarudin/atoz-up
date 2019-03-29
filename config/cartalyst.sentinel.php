@@ -53,7 +53,7 @@ return [
 
     'users' => [
 
-        'model' => 'Cartalyst\Sentinel\Users\EloquentUser',
+        'model' => 'App\Models\Sentinel\User',
 
     ],
 
@@ -68,7 +68,7 @@ return [
 
     'roles' => [
 
-        'model' => 'Cartalyst\Sentinel\Roles\EloquentRole',
+        'model' => 'App\Models\Sentinel\Role',
 
     ],
 
@@ -95,7 +95,7 @@ return [
 
     'permissions' => [
 
-        'class' => 'Cartalyst\Sentinel\Permissions\StandardPermissions',
+        'class' => 'App\Models\Sentinel\Permission',
 
     ],
 
@@ -111,7 +111,7 @@ return [
 
     'persistences' => [
 
-        'model' => 'Cartalyst\Sentinel\Persistences\EloquentPersistence',
+        'model' => 'App\Models\Sentinel\Persistence',
 
         'single' => false,
 
@@ -152,7 +152,7 @@ return [
 
     'activations' => [
 
-        'model' => 'Cartalyst\Sentinel\Activations\EloquentActivation',
+        'model' => 'App\Models\Sentinel\Activation',
 
         'expires' => 259200,
 
@@ -174,7 +174,7 @@ return [
 
     'reminders' => [
 
-        'model' => 'Cartalyst\Sentinel\Reminders\EloquentReminder',
+        'model' => 'App\Models\Sentinel\Reminder',
 
         'expires' => 14400,
 
@@ -226,7 +226,7 @@ return [
 
     'throttling' => [
 
-        'model' => 'Cartalyst\Sentinel\Throttling\EloquentThrottle',
+        'model' => 'App\Models\Sentinel\Throttling',
 
         'global' => [
 

@@ -2,9 +2,9 @@
 
 namespace App\Models\Sentinel;
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Users\EloquentUser;
 
-class user extends Model
+class User extends EloquentUser
 {
     //
 }

@@ -2,9 +2,9 @@
 
 namespace App\Models\Sentinel;
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Activations\EloquentActivation;
 
-class activation extends Model
+class Activation extends EloquentActivation
 {
     //
 }

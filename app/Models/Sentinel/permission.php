@@ -2,9 +2,9 @@
 
 namespace App\Models\Sentinel;
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Permissions\StandardPermissions;
 
-class permission extends Model
+class Permission extends StandardPermissions
 {
     //
 }

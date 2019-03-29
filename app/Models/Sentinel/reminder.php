@@ -2,9 +2,9 @@
 
 namespace App\Models\Sentinel;
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Reminders\EloquentReminder;
 
-class reminder extends Model
+class Reminder extends EloquentReminder
 {
     //
 }

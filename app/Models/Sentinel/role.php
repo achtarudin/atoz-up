@@ -2,9 +2,9 @@
 
 namespace App\Models\Sentinel;
 
-use Illuminate\Database\Eloquent\Model;
+use Cartalyst\Sentinel\Roles\EloquentRole;
 
-class role extends Model
+class Role extends EloquentRole
 {
     //
 }
