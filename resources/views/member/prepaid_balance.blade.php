@@ -1,13 +1,30 @@
-@extends("layout.index")
-@section("content")
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        hellow
-      </div>
-    </div>
-  </div>
+@extends("components.header.layout")
+@section("nav")
+  @include("components.header.nav", [
+    "name" => "Moncos", 
+    "code" => "1234567"])
 @endsection
-@push("script-js")
-    <script></script>
-@endpush
+@section("pages")
+  <div class="pb-3">
+    <h4>Prepaid Balance</h4>
+  </div>
+
+  <form action="" method="POST">
+    @csrf
+
+      @include("components.input_tag", [
+        "type" => "text", 
+        "name" => "mobile_number",
+        "id" => "mobile-number",
+        "placeholder" => "Mobile Number",
+      ])
+
+      @include("components.select_tag", [
+        "name" => "value",
+        "values" => ["1000", "2000", "3000"]
+      ])
+
+      @include("components.button_tag")
+
+  </form>
+@endsection

@@ -12,7 +12,7 @@ class Member{
       return $next($request);
     } 
     else {
-      return redirect('/');
+      return redirect()->route("login");
     }
   }
 }
