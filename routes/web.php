@@ -15,6 +15,8 @@ Route::group(['middleware' => "member"], function () {
   Route::post("prepaid-balance", "Member\PrepaidController@store")->name("post-prepaid-balance");
 
   Route::get("product", "Member\ProductController@index")->name("product");
+  Route::post("product", "Member\ProductController@store")->name("post-product");
+
   Route::get("success", "Member\SuccessController@index")->name("success");
   Route::get("payment", "Member\PaymentController@index")->name("payment");
   Route::get("order", "Member\OrderController@index")->name("order");

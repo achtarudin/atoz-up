@@ -8,23 +8,32 @@
   </div>
 
 
-  <form action="" method="POST">
+  <form action="{{url("/product")}}" method="POST">
     @csrf
 
-    @include("components.textarea_tag", 
-      [
-        "name" => "product", 
-        "holder" => "Product"
+    @include('components.alert_tag', [
+        "message" => $errors->first('product')
       ])
 
-    @include("components.textarea_tag", 
-    [
+    @include("components.textarea_tag", [
+        "name" => "product", 
+        "placeholder" => "Product"
+      ])
+
+    @include('components.alert_tag', [
+        "message" => $errors->first('shipping')
+      ])
+
+    @include("components.textarea_tag", [
       "name" => "shipping", 
-      "holder" => "Shipping Address"
+      "placeholder" => "Shipping Address"
     ])
 
-    @include("components.input_tag", 
-    [
+    @include('components.alert_tag', [
+      "message" => $errors->first('price')
+    ])
+
+    @include("components.input_tag", [
       "name" => "price", 
       "placeholder" => "Price",
       "id" => "price"

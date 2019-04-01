@@ -27,6 +27,7 @@ class Topup extends Model{
   public function histories () {
     return $this->morphMany($this->orderHistories, 'historiesable');
   }
+  
   public function user(){
     return $this->belongsTo($this->user, 'user_id');
   }

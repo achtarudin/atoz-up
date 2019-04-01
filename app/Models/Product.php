@@ -9,6 +9,7 @@ class Product extends Model{
 
   use SoftDeletes;
   protected $orderHistories = 'App\Models\OrderHistory';
+  protected $user = 'App\Models\Sentinel\User';
   protected $table = "products";
   protected $fillable = [
     "user_id",
@@ -18,7 +19,16 @@ class Product extends Model{
     "price",
   ];
 
+  public static function generateCode($length = 8){ 
+     $code = substr(md5(time()), 0, $length);
+     return "PR{$code}";
+  }
+
   public function histories () {
     return $this->morphMany($this->orderHistories, 'historiesable');
+  }
+
+  public function user(){
+    return $this->belongsTo($this->user, 'user_id');
   }
 }
