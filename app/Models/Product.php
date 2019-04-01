@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model{
 
   use SoftDeletes;
-
-  protected $table = "product";
+  protected $orderHistories = 'App\Models\OrderHistory';
+  protected $table = "products";
   protected $fillable = [
     "user_id",
     "product_name",
@@ -17,4 +17,8 @@ class Product extends Model{
     "shipping_code",
     "price",
   ];
+
+  public function histories () {
+    return $this->morphMany($this->orderHistories, 'historiesable');
+  }
 }

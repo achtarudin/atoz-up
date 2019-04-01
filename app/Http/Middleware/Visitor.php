@@ -10,6 +10,6 @@ class Visitor
     if(!Sentinel::check()){
       return $next($request);
     }
-      return redirect()->back();
+      return redirect()->route('prepaid-balance');
   }
 }

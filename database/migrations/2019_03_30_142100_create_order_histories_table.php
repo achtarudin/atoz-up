@@ -15,7 +15,12 @@ class CreateOrderHistoriesTable extends Migration
     {
         Schema::create('order_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('status');
+            $table->integer('historiesable_id');
+            $table->string('historiesable_type');
             $table->timestamps();
+            $table->softDeletes();
+            $table->engine = 'InnoDB';
         });
     }
 

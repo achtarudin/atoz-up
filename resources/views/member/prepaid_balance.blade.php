@@ -1,27 +1,32 @@
 @extends("components.header.layout")
 @section("nav")
   @include("components.header.nav", [
-    "name" => "Moncos", 
-    "code" => "1234567"])
+    "name" => \Str::title(\Sentinel::getUser()->first_name), 
+    "unpaid" => null
+    ])
 @endsection
 @section("pages")
   <div class="pb-3">
     <h4>Prepaid Balance</h4>
   </div>
 
-  <form action="" method="POST">
+  <form action="{{url("/prepaid-balance")}}" method="post">
     @csrf
 
+      @include('components.alert_tag', [
+        "message" => $errors->first('phone_number')
+      ])
+      
       @include("components.input_tag", [
         "type" => "text", 
-        "name" => "mobile_number",
-        "id" => "mobile-number",
-        "placeholder" => "Mobile Number",
+        "name" => "phone_number",
+        "id" => "phone-number",
+        "placeholder" => "Phone Number",
       ])
-
+      
       @include("components.select_tag", [
-        "name" => "value",
-        "values" => ["1000", "2000", "3000"]
+        "name" => "topup_value",
+        "values" => $topupValue
       ])
 
       @include("components.button_tag")
