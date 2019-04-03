@@ -3,10 +3,26 @@
 namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
+use App\Models\Topup;
 use App\Http\Controllers\Controller;
+use Sentinel;
 
 class PaymentController extends Controller{
-  public function index() {
-    return view("member.payment");
+  public function index(Request $request) {
+    $orderNo = $request->session()->get('orderNo');
+    $request->session()->forget(['orderNo', 'total', 'message']);
+    return view("member.payment", compact('orderNo'));
+  }
+
+  public function store(Request $request){
+
+    try{
+    $result1 = Topup::paid($request->orderNo);
+      dd($result1);
+    }
+    catch(\ErrorException $error){
+      Sentinel::logout();
+      return redirect()->route('login');
+    }
   }
 }

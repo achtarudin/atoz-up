@@ -9,14 +9,14 @@
     </h4>
   </div>
 
-  <form action="" method="POST">
+<form action="{{url('/payment')}}" method="POST">
     @csrf
     @include("components.input_tag", [
       "type" => "text", 
-      "name" => "code",
+      "name" => "orderNo",
       "id" => "code",
       "placeholder" => "Order no",
-      "status" => true
+      "value" => $orderNo
     ])
     @include("components.button_tag", [
       "name" => "Pay now",

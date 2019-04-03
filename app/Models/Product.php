@@ -25,7 +25,7 @@ class Product extends Model{
   }
 
   public function histories () {
-    return $this->morphMany($this->orderHistories, 'historiesable');
+    return $this->morphOne($this->orderHistories, 'historiesable');
   }
 
   public function user(){

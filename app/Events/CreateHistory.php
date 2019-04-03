@@ -12,8 +12,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class CreateHistory {
 
-  public $userTopup;
-  public function __construct($userTopup){
-    $this->userTopup = $userTopup;    
+  public $history;
+  public function __construct($history){
+    $this->history = $history;    
   }
 }

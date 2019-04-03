@@ -18,7 +18,10 @@ Route::group(['middleware' => "member"], function () {
   Route::post("product", "Member\ProductController@store")->name("post-product");
 
   Route::get("success", "Member\SuccessController@index")->name("success");
+
   Route::get("payment", "Member\PaymentController@index")->name("payment");
+  Route::post("payment", "Member\PaymentController@store")->name("post-payment");
+
   Route::get("order", "Member\OrderController@index")->name("order");
 });
 

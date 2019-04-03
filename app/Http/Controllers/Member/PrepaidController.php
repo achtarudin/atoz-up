@@ -24,7 +24,8 @@ class PrepaidController extends Controller
       "topup_value" => $request->topup_value,
       "topup_code" => Topup::generateCode(),
     ]);
-    $userTopup = $user->topup()->save($topup);
-    event(new CreateHistory($userTopup));
+    $userHistory = $user->topup()->save($topup);
+    event(new CreateHistory($userHistory));
+    return redirect()->route('success');
   }
 }
