@@ -2,11 +2,13 @@
 namespace App\Services;
 
 use App\Services\Interfaces\ContentSuccess;
+use App\Services\Taxs;
 
 class TopupSuccess implements ContentSuccess {
 
   public $request;
   public $content;
+  protected $typeOrder = "App\Services\TopupPayment";
 
   public function setRequest($request, $content) {
     $this->request = $request;
@@ -18,7 +20,8 @@ class TopupSuccess implements ContentSuccess {
   }
 
   public function successTotal(){
-    $this->flashMessage('total', $this->content->topup_value);
+    $taxs = Taxs::topup($this->content->topup_value);
+    $this->flashMessage('total',"Rp. {$taxs}");
   }
 
   public function successMessage(){
@@ -27,14 +30,18 @@ class TopupSuccess implements ContentSuccess {
     $this->flashMessage('message', $message);
   }
 
+  public function typeOrder (){
+    $this->flashMessage('type', $this->typeOrder);
+  }
+
   public function flashMessage($key, $value){
     $this->request->session()->put($key, $value);
   }
-
+  
   public function sendMessage(){
     $this->successOrderNo();
     $this->successTotal();
-    $this->successMessage();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    $this->successMessage(); 
+    $this->typeOrder();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
   }
-
 }

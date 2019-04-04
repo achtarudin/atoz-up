@@ -23,5 +23,8 @@ Route::group(['middleware' => "member"], function () {
   Route::post("payment", "Member\PaymentController@store")->name("post-payment");
 
   Route::get("order", "Member\OrderController@index")->name("order");
+
+  Route::get("logout", "Auth\LogoutController@logout")->name("logout");
 });
 
+Route::get('join', 'JoinController@join');

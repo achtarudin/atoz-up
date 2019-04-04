@@ -24,6 +24,10 @@ class Product extends Model{
      return "PR{$code}";
   }
 
+  public function scopePaid($query, $shipping_code){
+    return $query->where('shipping_code', $shipping_code)->first()->histories->update(["status" => "success"]);
+  }
+
   public function histories () {
     return $this->morphOne($this->orderHistories, 'historiesable');
   }

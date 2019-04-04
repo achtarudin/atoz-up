@@ -20,12 +20,16 @@ class Topup extends Model{
   ];
 
   public static function generateCode($length = 8){ 
-     $code = substr(md5(time()), 0, $length);
-     return "TP{$code}";
+    $code = substr(md5(time()), 0, $length);
+    return "TP{$code}";
   }
   
-  public function scopePaid($query, $orderNo){
-    return $query->where('topup_code', $orderNo)->first()->histories->update(["status" => "success"]);
+  public function scopePaid($query, $orderNo, $status='success'){
+    return $query->where('topup_code', $orderNo)->first()->histories->update(["status" => $status]);
+  }
+
+  public function scopeStatus($query, $orderNo) {
+    return $query->where('topup_code', $orderNo)->first()->histories->status;
   }
   public function histories () {
     return $this->morphOne($this->orderHistories, 'historiesable');

@@ -12,9 +12,9 @@ class ValidateProduct extends FormRequest
 
   public function rules(){
     return [
-      "product" => "required|between:10,150",
-      "shipping" => "required|between:10,150",
-      "price" => "required|digits:1",
+      "product" => "required|between:5,150",
+      "shipping" => "required|between:5,150",
+      "price" => "required|numeric|digits_between:2,10",
     ];
   }
 }

@@ -25,5 +25,10 @@ class SaveHistory {
       $successMessage->setRequest($this->request, $event->history);
       $successMessage->sendMessage();
     }
+    else{
+      $successMessage = resolve('product-success');
+      $successMessage->setRequest($this->request, $event->history);
+      $successMessage->sendMessage();
+    }
   }
 }

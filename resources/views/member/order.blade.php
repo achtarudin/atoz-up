@@ -16,26 +16,35 @@
         "placeholder" => "Search by Order no",
       ])
   </form>
-
-  @forelse ([] as $item)
-    {{$item}}
-  @empty
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio
-        <span class="badge badge-primary badge-pill">14</span>
+  <ul class="list-group list-group-flush">
+    @forelse ($userHistory as $item)
+    <li class="list-group-item">
+      {{$item->topup_code ?? $item->shipping_code}} - 
+      <span class="badge badge-primary badge-pill">
+        @php
+        if($item->topup_value){
+          $taxs = $item->topup_value * 0.05 + $item->topup_value;
+          $message = "Rp. {$item->topup_value} for {$item->phone_number}";
+        }
+        else {
+          $taxs = $item->price + 10000;
+          $message = "{$item->product_name} that costs {$item->price} 
+            will be shipped to : \n {$item->shipping_address}";
+        }
+        @endphp
+        Rp. {{$taxs}}
+      </span>
+      <span class="float-right badge badge-danger badge-pill">
+        {{$item->histories->status}}
+      </span> 
+      <div>
+        {{$message}}
+      </div>
+    </li>
+    @empty
+      <li class="list-group-item">
+        Order Is Empty
       </li>
-      <li class="list-group-item">Dapibus ac facilisis in
-        <span class="badge badge-primary badge-pill">14</span>
-      </li>
-      <li class="list-group-item">Morbi leo risus
-        <span class="badge badge-primary badge-pill">14</span>
-      </li>
-      <li class="list-group-item">Porta ac consectetur ac
-        <span class="badge badge-primary badge-pill">14</span>
-      </li>
-      <li class="list-group-item">Vestibulum at eros
-        <span class="badge badge-primary badge-pill">14</span>
-      </li>
-    </ul>
-  @endforelse
+    @endforelse
+  </ul>
 @endsection

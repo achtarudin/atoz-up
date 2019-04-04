@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Jobs\SendEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidateLogin;
@@ -22,6 +22,7 @@ class LoginController extends Controller
       $request->validated();
       $isAuth = Sentinel::authenticate($request->all());
       if ($isAuth){
+        SendEmail::dispatch($isAuth->email)->delay(now()->addMinutes(1));
         return redirect()->route("prepaid-balance");
       }
       return redirect()->route("login");

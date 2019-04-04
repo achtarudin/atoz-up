@@ -178,7 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TopupSuccessProvider::class,
-    ],
+        App\Providers\ProductSuccessProvider::class,
+      ],
 
     /*
     |--------------------------------------------------------------------------

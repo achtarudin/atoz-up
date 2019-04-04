@@ -8,5 +8,6 @@ interface ContentSuccess{
   public function successTotal();
   public function successMessage();
   public function sendMessage();
+  public function typeOrder ();
   public function flashMessage($key, $value);
 }

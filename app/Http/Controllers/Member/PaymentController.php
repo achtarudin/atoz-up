@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Models\Topup;
+use App\Services\PaymentProcess;
 use App\Http\Controllers\Controller;
 use Sentinel;
 
@@ -15,10 +16,11 @@ class PaymentController extends Controller{
   }
 
   public function store(Request $request){
-
     try{
-    $result1 = Topup::paid($request->orderNo);
-      dd($result1);
+      $process = new PaymentProcess($request->orderNo);
+      $type = $request->session()->get('type');
+      $process->pay(new $type);
+      return redirect()->route('order');
     }
     catch(\ErrorException $error){
       Sentinel::logout();

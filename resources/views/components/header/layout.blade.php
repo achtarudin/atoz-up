@@ -6,7 +6,7 @@
 
         @yield("nav")
 
-        <div class="card" style="height: 70vh; position: relative;">
+        <div class="card" style="height: 100%; position: relative;">
           <div class="card-body">
             <div class="py-2">
 

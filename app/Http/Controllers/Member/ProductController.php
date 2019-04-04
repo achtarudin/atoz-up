@@ -26,5 +26,7 @@ class ProductController extends Controller{
     ]);
     $userProduct = $user->product()->save($product);
     event(new CreateHistory($userProduct));
+    return redirect()->route('success');
+
   }
 }
