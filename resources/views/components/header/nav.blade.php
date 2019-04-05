@@ -2,7 +2,9 @@
   <div class="container">
     <div class="text-center">
       <span class="font-weight-bold">Hello, {{$name ?? "Ganteng"}}</span><br>
-      <span class="text-danger">{{$unpaid ?? "2"}} unpaid order</span>
+      <a href="{{url("/order")}}" class="badge badge-info">
+        {{$unpaid ?? "0"}} Unpaid Order
+      </a>
     </div>
     <div>
       <ul class="nav nav-pills">

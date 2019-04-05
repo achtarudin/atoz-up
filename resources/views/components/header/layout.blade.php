@@ -4,7 +4,10 @@
     <div class="row justify-content-center my-5">
       <div class="col-md-5 col-sm-10">
 
-        @yield("nav")
+        @include("components.header.nav", [
+        "name" => \Str::title(\Sentinel::getUser()->first_name), 
+        "unpaid" => \App\Models\OrderHistory::unpaid()
+        ])
 
         <div class="card" style="height: 100%; position: relative;">
           <div class="card-body">

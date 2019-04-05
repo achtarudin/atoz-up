@@ -26,7 +26,7 @@ class JoinController extends Controller
       ->join('order_histories', 'topups.id', '=', 'order_histories.historiesable_id')
       ->where('topups.user_id', '=', 1)
       ->where('order_histories.historiesable_type', Topup::class)
-      ->select('topups.topup_value', 'phone_number','topup_code','user_id', 'order_histories.status')->orderBy('order_histories.updated_at', 'desc');
+      ->select('topups.topup_value', 'phone_number','topup_code','user_id as ""', 'order_histories.status')->orderBy('order_histories.updated_at', 'desc');
 
        $holder2 = DB::table('products')
       ->join('order_histories', 'products.id', '=', 'order_histories.historiesable_id')

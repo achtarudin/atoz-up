@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Member;
 
-use Illuminate\Http\Request;
+use App\Models\Topup;
 use App\Events\CreateHistory;
 use App\Models\Sentinel\User;
-use App\Models\Topup;
-use App\Http\Requests\ValidatePrepaid;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidatePrepaid;
 
 class PrepaidController extends Controller
 {

@@ -2,7 +2,7 @@
 @section("nav")
   @include("components.header.nav", [
     "name" => \Str::title(\Sentinel::getUser()->first_name), 
-    "unpaid" => null
+    "unpaid" => \App\Models\OrderHistory::unpaid()
     ])
 @endsection
 @section("pages")
