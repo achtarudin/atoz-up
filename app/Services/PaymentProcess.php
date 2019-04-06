@@ -16,8 +16,10 @@ class PaymentProcess{
     $this->orderNo = $orderNo;
   }
 
-  public function pay(PaymentOrder $order){
-    // $this->typeService[$order]->payment($this->orderNo);
+  public function pay($type){
+    $this->payed(new $this->typeService[$type]);
+  }
+  protected function payed(PaymentOrder $order){
     $order->payment($this->orderNo);
   }
 }

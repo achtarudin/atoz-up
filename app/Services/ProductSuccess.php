@@ -8,7 +8,7 @@ class ProductSuccess implements ContentSuccess{
 
   protected $request;
   protected $content;
-  protected $typeOrder = "App\Services\ProductPayment";
+  protected $typeOrder = "App\Models\Product";
   public function setRequest($request, $content) {
     $this->request = $request;
     $this->content = $content;

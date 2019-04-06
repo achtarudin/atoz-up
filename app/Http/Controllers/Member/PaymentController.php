@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 use Sentinel;
 
 class PaymentController extends Controller{
+
   public function index(Request $request) {
+
     $orderNo = $request->session()->get('orderNo');
     $request->session()->forget(['orderNo', 'total', 'message']);
     return view("member.payment", compact('orderNo'));
@@ -20,15 +22,14 @@ class PaymentController extends Controller{
       if($request->session()->has('type')){
         $type = $request->session()->get('type');
         $process = new PaymentProcess($request->orderNo);
-        $process->pay(new $type);
+        $process->pay($type);
         $request->session()->forget('type');
+        return redirect()->route('history-order');
       }
-      return redirect()->route('history-order');
     }
     catch(\ErrorException $error){
-      dd($request->session()->all());
-      // Sentinel::logout();
-      // return redirect()->route('login');
+      Sentinel::logout();
+      return redirect()->route('login');
     }
   }
 }

@@ -6,9 +6,9 @@ use App\Services\Taxs;
 
 class TopupSuccess implements ContentSuccess {
 
-  public $request;
-  public $content;
-  protected $typeOrder = "App\Services\TopupPayment";
+  protected $request;
+  protected $content;
+  protected $typeOrder = "App\Models\Topup";
 
   public function setRequest($request, $content) {
     $this->request = $request;

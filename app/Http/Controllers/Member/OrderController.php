@@ -14,7 +14,7 @@ class OrderController extends Controller{
   
   public function index() {
     $user = User::findById();
-    $userHistory;
+    $userHistory = collect([]);
     foreach($user->topup as $userIsTopup){
       $userHistory[] = $userIsTopup;
     }
@@ -24,9 +24,11 @@ class OrderController extends Controller{
   return view("member.order", compact('userHistory'));
   }
 
-  public function payOrder ($id){
-    
-    $orderNo = OrderHistory::find($id)->historiesable->code;
+  public function payOrder (Request $request, $id){
+    $orderHistory =  OrderHistory::find($id);
+    $orderNo = $orderHistory->historiesable->code;
+    $type = $orderHistory->historiesable_type;
+    $request->session()->flash('type', $type);
     return view('member.payment', compact("orderNo"));
   }
 }
