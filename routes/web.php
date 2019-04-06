@@ -22,7 +22,9 @@ Route::group(['middleware' => "member"], function () {
   Route::get("payment", "Member\PaymentController@index")->name("payment");
   Route::post("payment", "Member\PaymentController@store")->name("post-payment");
 
-  Route::get("order", "Member\OrderController@index")->name("order");
+  Route::get("order", "Member\OrderController@index")->name("history-order");
+  Route::get("pay-order/{id}", "Member\OrderController@payOrder")->name("pay-order");
+
 
   Route::get("logout", "Auth\LogoutController@logout")->name("logout");
 });

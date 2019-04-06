@@ -18,13 +18,12 @@ class CreateProductsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('product_name');
             $table->string('shipping_address');
-            $table->string('shipping_code');
+            $table->string('code');
             $table->string('price');
             $table->timestamps();
             $table->softDeletes();
             $table->engine = 'InnoDB';
-            $table->unique('shipping_code');
-
+            $table->unique('code');
         });
     }
 

@@ -21,7 +21,7 @@ class ProductController extends Controller{
     $product  = new Product([
       "product_name" => $request->product,
       "shipping_address" => $request->shipping,
-      "shipping_code" => Product::generateCode(),
+      "code" => Product::generateCode(),
       "price" => $request->price,
     ]);
     $userProduct = $user->product()->save($product);

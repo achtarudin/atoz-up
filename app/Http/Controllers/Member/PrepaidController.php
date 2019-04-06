@@ -20,8 +20,8 @@ class PrepaidController extends Controller
     $user  = User::findById();
     $topup = new Topup([
       "phone_number" => $request->phone_number,
-      "topup_value" => $request->topup_value,
-      "topup_code" => Topup::generateCode(),
+      "value" => $request->topup_value,
+      "code" => Topup::generateCode(),
     ]);
     $userHistory = $user->topup()->save($topup);
     event(new CreateHistory($userHistory));

@@ -15,8 +15,8 @@ class Topup extends Model{
   protected $fillable = [
     "user_id",
     "phone_number",
-    "topup_value",
-    "topup_code",
+    "value",
+    "code",
   ];
 
   public static function generateCode($length = 8){ 
@@ -25,11 +25,11 @@ class Topup extends Model{
   }
   
   public function scopePaid($query, $orderNo, $status='success'){
-    return $query->where('topup_code', $orderNo)->first()->histories->update(["status" => $status]);
+    return $query->where('code', $orderNo)->first()->histories->update(["status" => $status]);
   }
 
   public function scopeStatus($query, $orderNo) {
-    return $query->where('topup_code', $orderNo)->first()->histories->status;
+    return $query->where('code', $orderNo)->first()->histories->status;
   }
   public function histories () {
     return $this->morphOne($this->orderHistories, 'historiesable');

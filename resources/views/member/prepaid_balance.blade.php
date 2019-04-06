@@ -1,10 +1,4 @@
 @extends("components.header.layout")
-@section("nav")
-  @include("components.header.nav", [
-    "name" => \Str::title(\Sentinel::getUser()->first_name), 
-    "unpaid" => \App\Models\OrderHistory::unpaid()
-    ])
-@endsection
 @section("pages")
   <div class="pb-3">
     <h4>Prepaid Balance</h4>

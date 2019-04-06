@@ -15,7 +15,7 @@ class Product extends Model{
     "user_id",
     "product_name",
     "shipping_address",
-    "shipping_code",
+    "code",
     "price",
   ];
 
@@ -24,8 +24,8 @@ class Product extends Model{
      return "PR{$code}";
   }
 
-  public function scopePaid($query, $shipping_code){
-    return $query->where('shipping_code', $shipping_code)->first()->histories->update(["status" => "success"]);
+  public function scopePaid($query, $code){
+    return $query->where('code', $code)->first()->histories->update(["status" => "success"]);
   }
 
   public function histories () {

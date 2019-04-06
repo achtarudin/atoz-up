@@ -15,7 +15,7 @@ class ProductSuccess implements ContentSuccess{
   }
 
   public function successOrderNo(){
-    $this->flashMessage('orderNo', $this->content->shipping_code);
+    $this->flashMessage('orderNo', $this->content->code);
   }
 
   public function successTotal(){

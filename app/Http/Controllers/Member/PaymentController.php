@@ -17,14 +17,18 @@ class PaymentController extends Controller{
 
   public function store(Request $request){
     try{
-      $process = new PaymentProcess($request->orderNo);
-      $type = $request->session()->get('type');
-      $process->pay(new $type);
-      return redirect()->route('order');
+      if($request->session()->has('type')){
+        $type = $request->session()->get('type');
+        $process = new PaymentProcess($request->orderNo);
+        $process->pay(new $type);
+        $request->session()->forget('type');
+      }
+      return redirect()->route('history-order');
     }
     catch(\ErrorException $error){
-      Sentinel::logout();
-      return redirect()->route('login');
+      dd($request->session()->all());
+      // Sentinel::logout();
+      // return redirect()->route('login');
     }
   }
 }

@@ -23,4 +23,10 @@ class OrderController extends Controller{
   }
   return view("member.order", compact('userHistory'));
   }
+
+  public function payOrder ($id){
+    
+    $orderNo = OrderHistory::find($id)->historiesable->code;
+    return view('member.payment', compact("orderNo"));
+  }
 }

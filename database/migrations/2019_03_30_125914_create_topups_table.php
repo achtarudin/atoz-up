@@ -17,12 +17,12 @@ class CreateTopupsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->string('phone_number');
-            $table->string('topup_value');
-            $table->string('topup_code');
+            $table->string('value');
+            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
             $table->engine = 'InnoDB';
-            $table->unique('topup_code');
+            $table->unique('code');
         });
     }
 

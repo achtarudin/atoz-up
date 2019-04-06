@@ -20,7 +20,7 @@
     @forelse ($userHistory as $item)
     <li class="list-group-item">
       {{$item->topup_code ?? $item->shipping_code}} - 
-      <span class="badge badge-primary badge-pill">
+      <span class="badge badge-dark badge-pill">
         @php
         if($item->topup_value){
           $taxs = $item->topup_value * 0.05 + $item->topup_value;
@@ -34,9 +34,16 @@
         @endphp
         Rp. {{$taxs}}
       </span>
-      <span class="float-right badge badge-danger badge-pill">
-        {{$item->histories->status}}
-      </span> 
+      @if ($item->histories->status === 'success')
+        <span class="float-right badge badge-danger badge-pill py-3">
+          Success
+        </span>
+      @else
+        <span class="float-right py-2">
+          <a href="{{route("pay-order", ["id" => $item->histories->id])}}?time={{\Carbon\Carbon::now()->timestamp}}123"/123 
+            class="badge badge-primary badge-pill py-2">Pay</a>
+        </span>
+      @endif
       <div>
         {{$message}}
       </div>

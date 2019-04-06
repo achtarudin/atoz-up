@@ -16,17 +16,17 @@ class TopupSuccess implements ContentSuccess {
   }
 
   public function successOrderNo(){
-    $this->flashMessage('orderNo', $this->content->topup_code);
+    $this->flashMessage('orderNo', $this->content->code);
   }
 
   public function successTotal(){
-    $taxs = Taxs::topup($this->content->topup_value);
+    $taxs = Taxs::topup($this->content->value);
     $this->flashMessage('total',"Rp. {$taxs}");
   }
 
   public function successMessage(){
     $message = "Your mobile phone number {$this->content->phone_number} 
-    receive Rp {$this->content->topup_value}";
+    receive Rp {$this->content->value}";
     $this->flashMessage('message', $message);
   }
 
