@@ -3,22 +3,23 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
-class DeleteOldMessage extends Command
+class TruncateTable extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'DeleteOldMessage';
+    protected $signature = 'truncate:history';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Delete Message by Command';
+    protected $description = 'Truncate  table Topup, Product, Order History';
 
     /**
      * Create a new command instance.
@@ -35,8 +36,11 @@ class DeleteOldMessage extends Command
      *
      * @return mixed
      */
-    public function handle(){
-      echo "Delete The Message\n";
-      $name = $this->anticipate('What is your name?', ['Taylor', 'Dayle']);
+    public function handle()
+    {
+        DB::table('topups')->truncate();
+        DB::table('products')->truncate();
+        DB::table('order_histories')->truncate();
+        DB::table('jobs')->truncate();
     }
 }

@@ -24,6 +24,7 @@ Route::group(['middleware' => "member"], function () {
 
   Route::get("order", "Member\OrderController@index")->name("history-order");
   Route::get("pay-order/{id}", "Member\OrderController@payOrder")->name("pay-order");
+  Route::post("search-order/{userId}", "Member\OrderController@searchOrder")->name("search-order");
 
 
   Route::get("logout", "Auth\LogoutController@logout")->name("logout");

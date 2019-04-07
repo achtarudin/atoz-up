@@ -34,4 +34,8 @@ class OrderHistory extends Model {
     return $query->where('user_id', $idUser)->where('status', 'unpaid')->count();
   }
 
+  public function scopeUserHistories($query, $userId) {
+    $query->where('user_id', $userId)->orderBy('updated_at', 'desc');
+  }
+
 }

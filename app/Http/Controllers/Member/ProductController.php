@@ -11,7 +11,8 @@ use  App\Http\Requests\ValidateProduct;
 
 class ProductController extends Controller{
   
-  public function index() {
+  public function index(Request $request) {
+    $request->session()->forget(['orderNo', 'total', 'message', 'type']);
     return view("member.product");
   }
 

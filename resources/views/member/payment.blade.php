@@ -10,6 +10,7 @@
   </div>
 
 <form action="{{url('/payment')}}" method="POST">
+  {{\Session::get('type')}}
     @csrf
     @include("components.input_tag", [
       "type" => "text", 

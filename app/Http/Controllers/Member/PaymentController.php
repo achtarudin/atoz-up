@@ -21,9 +21,9 @@ class PaymentController extends Controller{
     try{
       if($request->session()->has('type')){
         $type = $request->session()->get('type');
+        $request->session()->forget('type');
         $process = new PaymentProcess($request->orderNo);
         $process->pay($type);
-        $request->session()->forget('type');
         return redirect()->route('history-order');
       }
     }
