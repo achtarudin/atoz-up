@@ -13,7 +13,7 @@ class CreateTopupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('topups', function (Blueprint $table) {
+        Schema::connection('atoz_product')->create('topups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->string('phone_number');

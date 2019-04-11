@@ -10,6 +10,7 @@ class OrderHistory extends Model {
   use SoftDeletes;
 
   protected $table = 'order_histories';
+  protected $connection = 'atoz_product';
   protected $fillable = [
     'user_id',
     'status',
@@ -36,6 +37,10 @@ class OrderHistory extends Model {
 
   public function scopeUserHistories($query, $userId) {
     $query->where('user_id', $userId)->orderBy('updated_at', 'desc');
+  }
+
+  public function seeAllHistory($id){
+    dd(static::find($id));
   }
 
 }

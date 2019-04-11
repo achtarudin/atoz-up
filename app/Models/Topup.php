@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Topup extends Model
 {
     use SoftDeletes;
-  
+    protected $connection = 'atoz_product';
     protected $orderHistories = 'App\Models\OrderHistory';
     protected $user = 'App\Models\Sentinel\User';
     protected $table = "topups";
@@ -43,5 +43,13 @@ class Topup extends Model
     public function user()
     {
         return $this->belongsTo($this->user, 'user_id');
+    }
+
+    public function updatePrice($idUser)
+    {
+        $this
+      ->whereUserId($idUser)
+      ->update(['value' => $idUser]);
+        return $this;
     }
 }

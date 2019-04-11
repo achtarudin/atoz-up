@@ -38,9 +38,9 @@ class TruncateTable extends Command
      */
     public function handle()
     {
-        DB::table('topups')->truncate();
-        DB::table('products')->truncate();
-        DB::table('order_histories')->truncate();
-        DB::table('jobs')->truncate();
+        DB::table('atoz_product.topups')->truncate();
+        DB::table('atoz_product.products')->truncate();
+        DB::table('atoz_product.order_histories')->truncate();
+        DB::table('atoz_user.jobs')->truncate();
     }
 }

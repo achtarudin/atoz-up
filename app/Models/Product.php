@@ -10,7 +10,7 @@ class Product extends Model
 {
     use SoftDeletes;
     use UnionPaginatorTrait;
-
+    protected $connection = 'atoz_product';
     protected $orderHistories = 'App\Models\OrderHistory';
     protected $user = 'App\Models\Sentinel\User';
     protected $table = "products";
