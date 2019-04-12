@@ -31,3 +31,6 @@ Route::group(['middleware' => "member"], function () {
 });
 
 Route::get('join', 'JoinController@join');
+Route::get('upload', 'MultiUpload\UploadController@upload');
+Route::post('upload', 'MultiUpload\UploadController@uploadImage');
+
