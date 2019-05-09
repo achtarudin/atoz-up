@@ -34,3 +34,6 @@ Route::get('join', 'JoinController@join');
 Route::get('upload', 'MultiUpload\UploadController@upload');
 Route::post('upload', 'MultiUpload\UploadController@uploadImage');
 
+// Generete Pdf with makepdfjs
+Route::get('make/pdf', 'MakePdf\GeneratePdfController@index');
+
